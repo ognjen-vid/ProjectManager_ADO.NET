@@ -1,0 +1,33 @@
+﻿@model ProjectManager.Models.Firm
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Firm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            Employees
+        </dt>
+        <dd>
+            @Html.ActionLink("View", "FirmEmployees", new { firmId = Model.Id })
+        </dd>
+        <dt>
+            Projects
+        </dt>
+        <dd>
+            @Html.ActionLink("View", "FirmProjects", new { firmId = Model.Id })
+        </dd>
+    </dl>
+</div>

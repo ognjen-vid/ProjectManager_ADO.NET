@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProjectManager.Models.Employee>
+
+@{
+    ViewBag.Title = "Active Employees";
+}
+
+<h2>Active Employes</h2>
+<p>
+    @Html.ActionLink("Add to project", "GetNotActive", new { projectId = ViewBag.ProjectId, firmId = ViewBag.FirmId })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            Remove from project
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @using (Html.BeginForm("RemoveFromProject", "Project", new { employeeId = item.Id, projectId = ViewBag.ProjectID }, FormMethod.Post ))
+                {
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Remove" class="btn btn-default" />
+                    </div>
+                }
+            </td>
+        </tr>
+    }
+
+</table>

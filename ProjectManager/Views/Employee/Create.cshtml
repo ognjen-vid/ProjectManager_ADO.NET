@@ -1,0 +1,45 @@
+﻿@model ProjectManager.ViewModel.EmployeeViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<form method="post">
+    <div class="form-horizontal">
+        <h4>Create</h4>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                <label class="control-label col-md-2">Name</label>
+                <input type="text" class="form-control" name="Employee.Name" placeholder="Name" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label class="control-label col-md-2">Last Name</label>
+                <input type="text" class="form-control" name="Employee.LastName" placeholder="LastName" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label class="control-label col-md-2">Firm</label>
+                <select name="SelectedFirmId" class="form-control">
+                    @foreach (var firm in Model.Firms)
+                    {
+                        <option value="@firm.Id">@firm.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
